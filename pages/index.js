@@ -12,6 +12,8 @@ export default function Home() {
 
         <h2>You're currently {session ? 'logged in.' : 'logged out.'}</h2>
 
+        {session && session.user && <h3>Logged in as {session.user.name}</h3>}
+
         {session ? (
           <button
             onClick={() => signOut({ callbackUrl: 'http://localhost:3000' })}
