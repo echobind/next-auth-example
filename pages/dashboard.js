@@ -1,14 +1,7 @@
 import { Badge, Flex, Heading, Stack } from '@chakra-ui/react';
-import { useSession } from 'next-auth/client';
-import { UnauthorizedContent } from '../components/UnauthorizedContent';
+import { getSession } from 'next-auth/client';
 
 export default function Dashboard() {
-  const [session] = useSession();
-
-  if (!session) {
-    return <UnauthorizedContent />;
-  }
-
   return (
     <Flex
       direction='column'
@@ -35,4 +28,17 @@ export default function Dashboard() {
       </Stack>
     </Flex>
   );
+}
+
+export async function getServerSideProps({ req, res }) {
+  const session = await getSession({ req });
+
+  if (!session) {
+    res.writeHead(302, { Location: '/' });
+    res.end();
+  }
+
+  return {
+    props: {},
+  };
 }
