@@ -1,6 +1,6 @@
 import React from 'react';
 import { providers, signIn } from 'next-auth/client';
-import { Button, Flex, Icon } from '@chakra-ui/react';
+import { Button, Flex } from '@chakra-ui/react';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 

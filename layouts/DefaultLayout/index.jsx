@@ -1,11 +1,16 @@
-import { Center, Box } from '@chakra-ui/react';
-import { Navbar } from '../../components/Navbar';
+import { Box } from '@chakra-ui/react';
+import { NavbarWithLoginState } from '../../components/Navbar';
+import { useSession } from 'next-auth/client';
 
-export const DefaultLayout = ({ children }) => (
-  <Box>
-    <Navbar />
-    {children}
-  </Box>
-);
+export const DefaultLayout = ({ children }) => {
+  const [session] = useSession();
+
+  return (
+    <Box>
+      <NavbarWithLoginState session={session} />
+      {children}
+    </Box>
+  );
+};
 
 export default DefaultLayout;
