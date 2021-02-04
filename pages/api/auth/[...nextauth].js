@@ -2,6 +2,7 @@ import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
 
 const options = {
+  theme: 'light',
   // Configure one or more authentication providers
   providers: [
     Providers.GitHub({
