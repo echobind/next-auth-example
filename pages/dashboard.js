@@ -1,7 +1,32 @@
+import React, { useState, useEffect } from 'react'
 import { Badge, Flex, Heading, Stack } from '@chakra-ui/react';
 import { getSession } from 'next-auth/client';
 
+const fetchThings = async () => {
+  const response = await fetch('/api/dashboard', {
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    }
+  });
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw json
+  }
+
+  return json;
+}
+
 export default function Dashboard() {
+  const [things, setThings] = useState([]);
+
+  useEffect(() => {
+    fetchThings().then(things => {
+      setThings(things)
+    });
+  }, [])
+
   return (
     <Flex
       direction='column'
@@ -12,19 +37,13 @@ export default function Dashboard() {
       <Heading mb={3}>My Dashboard</Heading>
 
       <Stack>
-        <Badge mb={2}>Things</Badge>
-        <Badge mb={2} colorScheme='green'>
-          Stuff
-        </Badge>
-        <Badge mb={2} colorScheme='red'>
-          Foo
-        </Badge>
-        <Badge mb={2} colorScheme='purple'>
-          Bar
-        </Badge>
-        <Badge mb={2} colorScheme='blue'>
-          Baz
-        </Badge>
+        {things.map((thing) => {
+          return (
+            <Badge mb={2} colorScheme={thing.colorScheme} key={thing.value}>
+              {thing.value}
+            </Badge>
+          )
+        })}
       </Stack>
     </Flex>
   );
