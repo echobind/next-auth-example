@@ -6,7 +6,6 @@ import { DefaultLayout } from '../layouts/DefaultLayout/index';
 function MyApp({ Component, pageProps }) {
   return (
     <Provider session={pageProps.session}>
-      <Component {...pageProps} />
       <ChakraProvider>
         <DefaultLayout>
           <Component {...pageProps} />
