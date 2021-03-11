@@ -1,4 +1,9 @@
 
+
+![NextAuth.js Logo](https://github.com/echobind/next-auth-example/blob/main/next-auth-logo.png)
+
+
+
 ## One-Click Signup in Next.js With next-auth | Part 1 of a next-auth series
 
 This is the example repo for the blog post, [One-Click Signup in Next.js With next-auth](https://blog.echobind.com/one-click-signup-in-next-js-with-next-auth-587d7d44496c) by [Mike Cavaliere](https://medium.com/@mikecavaliere) of [Echobind](https://echobind.com/).
