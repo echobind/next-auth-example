@@ -16,7 +16,9 @@ export default function SignIn({ providers }) {
         <div key={provider.name}>
           <Button
             size='lg'
-            onClick={() => signIn(provider.id)}
+            onClick={() =>
+              signIn(provider.id, { callbackUrl: process.env.NEXTAUTH_URL })
+            }
             mb={3}
             leftIcon={icons[provider.id]}
           >
